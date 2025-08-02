@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse ECG - Détection d'Anomalies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border: 1px dashed #ccc;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        .result-card {
+            border-left: 4px solid;
+            padding: 15px;
+            margin-bottom: 30px;
+            background-color: #f8f9fa;
+        }
+        .normal {
+            border-color: #2ecc71;
+        }
+        .anomaly {
+            border-color: #e74c3c;
+        }
+        .plot-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .plot-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .metrics {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            flex: 1;
+            margin: 0 10px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .normal-value {
+            color: #2ecc71;
+        }
+        .anomaly-value {
+            color: #e74c3c;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        .instructions {
+            background: #fff8e1;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Analyse ECG - Détection d'Anomalies</h1>
+        
+        <!-- Formulaire d'upload -->
+        <div class="upload-form">
+            <h2>Uploader un fichier ECG</h2>
+            <div class="instructions">
+                <p>Le fichier CSV doit contenir exactement 140 valeurs numériques séparées par des virgules.</p>
+                <p>Exemple de format : <code>0.1,0.4,1.2,0.3,-0.1,...</code> (140 valeurs)</p>
+            </div>
+            
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="ecg-file">Sélectionnez un fichier CSV :</label>
+                    <input type="file" id="ecg-file" name="file" accept=".csv" required>
+                </div>
+                <button type="submit">Analyser l'ECG</button>
+            </form>
+        </div>
+
+        <!-- Résultats (s'affiche seulement après soumission) -->
+        {% if prediction %}
+        <div class="result-card {{ 'anomaly' if prediction == 'Anomaly' else 'normal' }}">
+            <h2>Diagnostic: {{ prediction }}</h2>
+            <p>Le modèle a détecté une {{ 'anomalie' if prediction == 'Anomaly' else 'lecture normale' }} dans le signal ECG.</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <h3>Score d'anomalie</h3>
+                <div class="metric-value {{ 'anomaly-value' if prediction == 'Anomaly' else 'normal-value' }}">
+                    {{ "%.4f"|format(loss) }}
+                </div>
+                <p>Seuil: {{ "%.4f"|format(4.8828) }}</p>
+            </div>
+        </div>
+        
+        <div class="plot-container">
+            <h3>Signal ECG original vs reconstruit</h3>
+            <img src="{{ url_for('static', filename='final.png') }}" alt="ECG Analysis Plot">
+            <p>La ligne bleue représente le signal original, la ligne orange montre la reconstruction par le modèle autoencodeur.</p>
+        </div>
+        
+        <center>
+            <a href="/" class="btn">Nouvelle analyse</a>
+        </center>
+        {% endif %}
+    </div>
+    
+    <footer>
+        <p>Système de détection d'anomalies ECG - &copy; 2023</p>
+    </footer>
+</body>
+</html>
