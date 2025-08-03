@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "ecg_backend/**/*.py",
+      "src": "ecg_backend/app.py",
       "use": "@vercel/python"
     }
   ],
@@ -11,5 +11,10 @@
       "src": "/(.*)",
       "dest": "ecg_backend/app.py"
     }
-  ]
+  ],
+  "functions": {
+    "ecg_backend/app.py": {
+      "runtime": "python3.9"
+    }
+  }
 }
