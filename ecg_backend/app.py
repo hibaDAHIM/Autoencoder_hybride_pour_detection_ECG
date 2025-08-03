@@ -222,7 +222,6 @@ def process_ecg_prediction(file, threshold, upload_folder='static/uploaded_files
     }
 
 @app.route("/")
-@app.route("/api")
 def home():
     return "ECG Anomaly Detection API"
 
