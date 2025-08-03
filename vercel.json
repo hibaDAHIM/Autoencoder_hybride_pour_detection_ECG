@@ -1,0 +1,43 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "ecg_backend/app.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "ecg_frontend/package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/login",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/predict",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/patients(.*)",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/admin(.*)",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/ecg_records(.*)",
+      "dest": "ecg_backend/app.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "ecg_frontend/build/index.html"
+    }
+  ]
+}
