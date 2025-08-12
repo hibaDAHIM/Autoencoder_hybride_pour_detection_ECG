@@ -55,7 +55,7 @@ Autoencoder_hybride_pour_detection_ECG/
 
 🧠 Model Architecture
   Hybrid Autoencoder Design
-  The model combines two powerful architectures:
+  The model combines two powerful architectures:                                           
     -LSTM Component   
       Captures temporal dependencies in ECG signals
       Processes sequential heartbeat patterns
