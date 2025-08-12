@@ -63,7 +63,7 @@ Autoencoder_hybride_pour_detection_ECG/
     -CNN Component
       Extracts spatial features from ECG segments
       Detects local anomalous patterns
-      Provides robust feature representation 
+      Provides robust feature representation                         
     -Fusion Layer    
       Combines LSTM and CNN features
       Learns optimal feature weighting
