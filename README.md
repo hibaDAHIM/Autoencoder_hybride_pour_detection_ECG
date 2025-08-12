@@ -84,6 +84,7 @@ Training Process
     - Anomaly Detection: Use reconstruction error to identify anomalies
 
 📊 Performance Metrics
+
       |       Metric        |  Value |
       |---------------------|--------|
       | Accuracy            | 97.03% |
@@ -104,7 +105,7 @@ The model is trained and tested on:
 Hiba DAHIM  - dahim.hiba@gmail.com
 Chaimaa BDRI - badrichaimaa17@gmail.com
 
-**Supervised by:** Prof. Yann BENMAISSA  
+**Supervised by:** Prof. Yann BENMAISSA (INPT)
 
 📧 Contact
 
