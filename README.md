@@ -11,6 +11,7 @@ ECG Anomaly Detection using Hybrid Autoencoder (LSTM + CNN)
 
 🏗️ Project Structure
 Autoencoder_hybride_pour_detection_ECG/
+
     ├── ecg_backend/
     │   ├── app.py                 
     │   ├── model.py
@@ -20,6 +21,7 @@ Autoencoder_hybride_pour_detection_ECG/
     ├── requirements.txt           # Python dependencies
     ├── vercel.json               # Vercel deployment config
     └── README.md                 # This file
+
 🚀 Quick Start
   Prerequisites
 
@@ -92,6 +94,7 @@ Training Process
       | F1-Score (Normal)   | 97%    |
       | F1-Score (Anomaly)  | 97%    |
       | Total Test Samples  | 438    |
+
 🗂️ Datasets
 The model is trained and tested on:
   -ECG5000
