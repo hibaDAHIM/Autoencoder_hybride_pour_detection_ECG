@@ -83,6 +83,7 @@ Training Process
 
 📊 Performance Metrics
       |       Metric        |  Value |
+      |---------------------|--------|
       | Accuracy            | 97.03% |
       | Precision (Normal)  | 98%    |
       | Precision (Anomaly) | 96%    |
