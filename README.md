@@ -35,13 +35,16 @@ Autoencoder_hybride_pour_detection_ECG/
     cd Autoencoder_hybride_pour_detection_ECG
 
   Create virtual environment
+
     python -m venv ecg_env
     source ecg_env/bin/activate  # On Windows: ecg_env\Scripts\activate
 
   Install dependencies
+
     pip install -r requirements.txt
 
   Run the Flask API
+
     cd ecg_backend
     python app.py
 
@@ -53,22 +56,17 @@ Autoencoder_hybride_pour_detection_ECG/
 🧠 Model Architecture
   Hybrid Autoencoder Design
   The model combines two powerful architectures:
-
-    LSTM Component
+    -LSTM Component
     
       Captures temporal dependencies in ECG signals
       Processes sequential heartbeat patterns
-      Encodes time-series information
-    
-    
-    CNN Component
+      Encodes time-series information  
+    -CNN Component
     
       Extracts spatial features from ECG segments
       Detects local anomalous patterns
-      Provides robust feature representation
-    
-    
-    Fusion Layer
+      Provides robust feature representation 
+    -Fusion Layer
     
       Combines LSTM and CNN features
       Learns optimal feature weighting
