@@ -56,26 +56,20 @@ Autoencoder_hybride_pour_detection_ECG/
 🧠 Model Architecture
   Hybrid Autoencoder Design
   The model combines two powerful architectures:
-    -LSTM Component
-    
+    -LSTM Component   
       Captures temporal dependencies in ECG signals
       Processes sequential heartbeat patterns
       Encodes time-series information  
     -CNN Component
-    
       Extracts spatial features from ECG segments
       Detects local anomalous patterns
       Provides robust feature representation 
-    -Fusion Layer
-    
+    -Fusion Layer    
       Combines LSTM and CNN features
       Learns optimal feature weighting
       Produces final anomaly score
 
-
-
 Training Process
-
     - Data Preprocessing: Normalize ECG signals, segment into fixed-length windows
     - Feature Extraction: Extract both temporal (LSTM) and spatial (CNN) features
     - Reconstruction Training: Train autoencoder to reconstruct normal ECG patterns
