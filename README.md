@@ -4,9 +4,11 @@ ECG Anomaly Detection using Hybrid Autoencoder (LSTM + CNN)
     Key Features
 
 🧠 Hybrid Architecture: Combines LSTM for temporal patterns and CNN for spatial feature extraction
+
 📊 Real-time Detection: Flask API for real-time ECG anomaly detection
-🔍 Anomaly Scoring: Provides confidence scores for detected anomalies
+
 📈 Visualization: Interactive plots for ECG signals and detected anomalies
+
 🌐 Web Interface: User-friendly web interface for uploading and analyzing ECG data
 
 🏗️ Project Structure
